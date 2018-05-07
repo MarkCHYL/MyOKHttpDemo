@@ -10,12 +10,9 @@ import android.widget.TextView;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
-import java.util.List;
-
 import demo.mark.com.myokhttpdemo.api.JsonCallback;
-import demo.mark.com.myokhttpdemo.bean.AdListBean;
+import demo.mark.com.myokhttpdemo.bean.AdListBeanResult;
 import demo.mark.com.myokhttpdemo.bean.BaseBean;
-import demo.mark.com.myokhttpdemo.bean.LoginBean;
 
 public class MarkActivity extends AppCompatActivity {
 
@@ -85,10 +82,10 @@ public class MarkActivity extends AppCompatActivity {
 //                    }
 //                }
 //        );
-        HttpUtils.testRequest(context, new JsonCallback<BaseBean>() {
+        HttpUtils.testRequest(context, new JsonCallback<BaseBean<AdListBeanResult>>() {
             @Override
-            public void onSuccess(Response<BaseBean> response) {
-                tv_show_reponse.setText(response.body().toString());
+            public void onSuccess(Response<BaseBean<AdListBeanResult>> response) {
+                tv_show_reponse.setText(response.body().getResponse_body().getAd_list().toString());
             }
         });
     }

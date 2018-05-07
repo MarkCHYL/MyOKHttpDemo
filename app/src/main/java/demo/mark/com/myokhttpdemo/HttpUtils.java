@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import demo.mark.com.myokhttpdemo.api.JsonCallback;
-import demo.mark.com.myokhttpdemo.bean.AdListBean;
+import demo.mark.com.myokhttpdemo.bean.AdListBeanResult;
 import demo.mark.com.myokhttpdemo.bean.BaseBean;
 import demo.mark.com.myokhttpdemo.bean.LoginBean;
 import okhttp3.MediaType;
@@ -133,8 +133,8 @@ public class HttpUtils {
     }
 
     public static void testRequest(Context context,
-                                   JsonCallback<BaseBean> stringCallback) {
-        OkGo.<BaseBean>post(Urls.baseUrl + "/qqt/system/queryAdList.json")
+                                   JsonCallback<BaseBean<AdListBeanResult>> stringCallback) {
+        OkGo.<BaseBean<AdListBeanResult>>post(Urls.baseUrl + "/qqt/system/queryAdList.json")
                 .tag(context)
                 .params("ad_position", 4)
                 .params("last_update_time", "0")
